@@ -17,6 +17,8 @@
  */
 package com.viewpagerindicator;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -35,8 +37,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-
-import java.util.ArrayList;
 
 /**
  * A TitlePageIndicator is a PageIndicator which displays the title of left view
@@ -123,7 +123,7 @@ public class TitlePageIndicator extends View implements PageIndicator {
     private boolean mBoldText;
     private int mColorText;
     private int mColorSelected;
-    private Path mPath = new Path();
+    private final Path mPath = new Path();
     private final Rect mBounds = new Rect();
     private final Paint mPaintFooterLine = new Paint();
     private IndicatorStyle mFooterIndicatorStyle;
@@ -181,21 +181,21 @@ public class TitlePageIndicator extends View implements PageIndicator {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TitlePageIndicator, defStyle, 0);
 
         //Retrieve the colors to be used for this view and apply them.
-        mFooterLineHeight = a.getDimension(R.styleable.TitlePageIndicator_footerLineHeight, defaultFooterLineHeight);
-        mFooterIndicatorStyle = IndicatorStyle.fromValue(a.getInteger(R.styleable.TitlePageIndicator_footerIndicatorStyle, defaultFooterIndicatorStyle));
-        mFooterIndicatorHeight = a.getDimension(R.styleable.TitlePageIndicator_footerIndicatorHeight, defaultFooterIndicatorHeight);
-        mFooterIndicatorUnderlinePadding = a.getDimension(R.styleable.TitlePageIndicator_footerIndicatorUnderlinePadding, defaultFooterIndicatorUnderlinePadding);
-        mFooterPadding = a.getDimension(R.styleable.TitlePageIndicator_footerPadding, defaultFooterPadding);
-        mLinePosition = LinePosition.fromValue(a.getInteger(R.styleable.TitlePageIndicator_linePosition, defaultLinePosition));
-        mTopPadding = a.getDimension(R.styleable.TitlePageIndicator_topPadding, defaultTopPadding);
-        mTitlePadding = a.getDimension(R.styleable.TitlePageIndicator_titlePadding, defaultTitlePadding);
-        mClipPadding = a.getDimension(R.styleable.TitlePageIndicator_clipPadding, defaultClipPadding);
-        mColorSelected = a.getColor(R.styleable.TitlePageIndicator_selectedColor, defaultSelectedColor);
+        mFooterLineHeight = a.getDimension(R.styleable.TitlePageIndicator_vi_footerLineHeight, defaultFooterLineHeight);
+        mFooterIndicatorStyle = IndicatorStyle.fromValue(a.getInteger(R.styleable.TitlePageIndicator_vi_footerIndicatorStyle, defaultFooterIndicatorStyle));
+        mFooterIndicatorHeight = a.getDimension(R.styleable.TitlePageIndicator_vi_footerIndicatorHeight, defaultFooterIndicatorHeight);
+        mFooterIndicatorUnderlinePadding = a.getDimension(R.styleable.TitlePageIndicator_vi_footerIndicatorUnderlinePadding, defaultFooterIndicatorUnderlinePadding);
+        mFooterPadding = a.getDimension(R.styleable.TitlePageIndicator_vi_footerPadding, defaultFooterPadding);
+        mLinePosition = LinePosition.fromValue(a.getInteger(R.styleable.TitlePageIndicator_vi_linePosition, defaultLinePosition));
+        mTopPadding = a.getDimension(R.styleable.TitlePageIndicator_vi_topPadding, defaultTopPadding);
+        mTitlePadding = a.getDimension(R.styleable.TitlePageIndicator_vi_titlePadding, defaultTitlePadding);
+        mClipPadding = a.getDimension(R.styleable.TitlePageIndicator_vi_clipPadding, defaultClipPadding);
+        mColorSelected = a.getColor(R.styleable.TitlePageIndicator_vi_selectedColor, defaultSelectedColor);
         mColorText = a.getColor(R.styleable.TitlePageIndicator_android_textColor, defaultTextColor);
-        mBoldText = a.getBoolean(R.styleable.TitlePageIndicator_selectedBold, defaultSelectedBold);
+        mBoldText = a.getBoolean(R.styleable.TitlePageIndicator_vi_selectedBold, defaultSelectedBold);
 
         final float textSize = a.getDimension(R.styleable.TitlePageIndicator_android_textSize, defaultTextSize);
-        final int footerColor = a.getColor(R.styleable.TitlePageIndicator_footerColor, defaultFooterColor);
+        final int footerColor = a.getColor(R.styleable.TitlePageIndicator_vi_footerColor, defaultFooterColor);
         mPaintText.setTextSize(textSize);
         mPaintText.setAntiAlias(true);
         mPaintFooterLine.setStyle(Paint.Style.FILL_AND_STROKE);
@@ -541,7 +541,7 @@ public class TitlePageIndicator extends View implements PageIndicator {
         }
     }
 
-    public boolean onTouchEvent(android.view.MotionEvent ev) {
+    @Override public boolean onTouchEvent(android.view.MotionEvent ev) {
         if (super.onTouchEvent(ev)) {
             return true;
         }

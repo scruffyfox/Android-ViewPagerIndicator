@@ -79,12 +79,12 @@ public class LinePageIndicator extends View implements PageIndicator {
         //Retrieve styles attributes
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LinePageIndicator, defStyle, 0);
 
-        mCentered = a.getBoolean(R.styleable.LinePageIndicator_centered, defaultCentered);
-        mLineWidth = a.getDimension(R.styleable.LinePageIndicator_lineWidth, defaultLineWidth);
-        mGapWidth = a.getDimension(R.styleable.LinePageIndicator_gapWidth, defaultGapWidth);
-        setStrokeWidth(a.getDimension(R.styleable.LinePageIndicator_strokeWidth, defaultStrokeWidth));
-        mPaintUnselected.setColor(a.getColor(R.styleable.LinePageIndicator_unselectedColor, defaultUnselectedColor));
-        mPaintSelected.setColor(a.getColor(R.styleable.LinePageIndicator_selectedColor, defaultSelectedColor));
+        mCentered = a.getBoolean(R.styleable.LinePageIndicator_vi_centered, defaultCentered);
+        mLineWidth = a.getDimension(R.styleable.LinePageIndicator_vi_lineWidth, defaultLineWidth);
+        mGapWidth = a.getDimension(R.styleable.LinePageIndicator_vi_gapWidth, defaultGapWidth);
+        setStrokeWidth(a.getDimension(R.styleable.LinePageIndicator_vi_strokeWidth, defaultStrokeWidth));
+        mPaintUnselected.setColor(a.getColor(R.styleable.LinePageIndicator_vi_unselectedColor, defaultUnselectedColor));
+        mPaintSelected.setColor(a.getColor(R.styleable.LinePageIndicator_vi_selectedColor, defaultSelectedColor));
 
         Drawable background = a.getDrawable(R.styleable.LinePageIndicator_android_background);
         if (background != null) {
@@ -190,7 +190,7 @@ public class LinePageIndicator extends View implements PageIndicator {
         }
     }
 
-    public boolean onTouchEvent(android.view.MotionEvent ev) {
+    @Override public boolean onTouchEvent(android.view.MotionEvent ev) {
         if (super.onTouchEvent(ev)) {
             return true;
         }

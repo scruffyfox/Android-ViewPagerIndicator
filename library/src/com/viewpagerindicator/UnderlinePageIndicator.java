@@ -93,10 +93,10 @@ public class UnderlinePageIndicator extends View implements PageIndicator {
         //Retrieve styles attributes
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.UnderlinePageIndicator, defStyle, 0);
 
-        setFades(a.getBoolean(R.styleable.UnderlinePageIndicator_fades, defaultFades));
-        setSelectedColor(a.getColor(R.styleable.UnderlinePageIndicator_selectedColor, defaultSelectedColor));
-        setFadeDelay(a.getInteger(R.styleable.UnderlinePageIndicator_fadeDelay, defaultFadeDelay));
-        setFadeLength(a.getInteger(R.styleable.UnderlinePageIndicator_fadeLength, defaultFadeLength));
+        setFades(a.getBoolean(R.styleable.UnderlinePageIndicator_vi_fades, defaultFades));
+        setSelectedColor(a.getColor(R.styleable.UnderlinePageIndicator_vi_selectedColor, defaultSelectedColor));
+        setFadeDelay(a.getInteger(R.styleable.UnderlinePageIndicator_vi_fadeDelay, defaultFadeDelay));
+        setFadeLength(a.getInteger(R.styleable.UnderlinePageIndicator_vi_fadeLength, defaultFadeLength));
 
         Drawable background = a.getDrawable(R.styleable.UnderlinePageIndicator_android_background);
         if (background != null) {
@@ -178,7 +178,7 @@ public class UnderlinePageIndicator extends View implements PageIndicator {
         canvas.drawRect(left, top, right, bottom, mPaint);
     }
 
-    public boolean onTouchEvent(MotionEvent ev) {
+    @Override public boolean onTouchEvent(MotionEvent ev) {
         if (super.onTouchEvent(ev)) {
             return true;
         }
