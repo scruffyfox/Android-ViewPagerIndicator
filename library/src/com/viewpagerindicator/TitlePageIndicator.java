@@ -50,7 +50,7 @@ public class TitlePageIndicator extends View implements PageIndicator {
      * center should the underline be fully faded. A value of 0.25 means that
      * halfway between the center of the screen and an edge.
      */
-    private static final float SELECTION_FADE_PERCENTAGE = 0.25f;
+    private static final float SELECTION_FADE_PERCENTAGE = 0.3f;
 
     /**
      * Percentage indicating what percentage of the screen width away from
